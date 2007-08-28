@@ -47,7 +47,6 @@ install -m755 digger -D %{buildroot}%{_gamesbindir}/%{name}
 install -d %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
-Encoding=UTF-8
 Name=Digger Remastered
 Comment=%{Summary}
 Exec=%{_gamesbindir}/%{name}
