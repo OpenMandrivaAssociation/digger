@@ -18,6 +18,7 @@ Group:		Games/Arcade
 URL:		http://www.digger.org/
 Summary:	%{Summary}
 BuildRequires:	SDL-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 This is the Unix version of the old classic game Digger.
