@@ -18,6 +18,7 @@ Group:		Games/Arcade
 URL:		http://www.digger.org/
 Summary:	%{Summary}
 BuildRequires:	SDL-devel
+BuildRequires:	zlib-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
