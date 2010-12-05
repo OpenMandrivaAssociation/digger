@@ -1,6 +1,6 @@
 %define name	digger
 %define version	20020314
-%define release %mkrel 8
+%define release %mkrel 9
 %define Summary The Unix version of the old classic game Digger
 
 Name:		%{name}
