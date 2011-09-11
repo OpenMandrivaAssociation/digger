@@ -1,25 +1,18 @@
-%define name	digger
-%define version	20020314
-%define release %mkrel 9
-%define Summary The Unix version of the old classic game Digger
-
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-Source0:	%{name}-%{version}.tar.bz2
+Name:		digger
+Version:	20110912
+Release:	1
+# created from my branch at https://gitorious.org/digger with:
+# git archive --prefix=digger-$(date +%Y%m%d)/ -o digger-$(date +%Y%m%d).tar --format tar HEAD
+Source0:	%{name}-%{version}.tar.xz
 Source11:	%{name}-16x16.png
 Source12:	%{name}-32x32.png
 Source13:	%{name}-48x48.png
-Patch0:		digger-optflags.patch
-Patch1:		digger-fix_gcc_3.patch
-Patch2:		digger-20020314-update-digger.txt-with-legal-info.patch
 License:	GPL
 Group:		Games/Arcade
 URL:		http://www.digger.org/
-Summary:	%{Summary}
+Summary:	The Unix version of the old classic game Digger
 BuildRequires:	SDL-devel
 BuildRequires:	zlib-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 This is the Unix version of the old classic game Digger.
@@ -34,22 +27,18 @@ It has many new features including:
 
 %prep
 %setup -q
-%patch0 -p0 -b .optflags
-%patch1 -p0 -b .gcc3
-%patch2 -p1 -b .legal
 
 %build
-%make -f Makefile.sdl OPTFLAGS="$RPM_OPT_FLAGS"
+%make CFLAGS="%{optflags}"
 
 %install
-rm -rf %{buildroot}
 install -m755 digger -D %{buildroot}%{_gamesbindir}/%{name}
 
 install -d %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=Digger Remastered
-Comment=%{Summary}
+Comment=%{summary}
 Exec=%{_gamesbindir}/%{name}
 Icon=%{name}
 Terminal=false
@@ -62,11 +51,7 @@ install -m644 %{SOURCE11} -D %{buildroot}%{_miconsdir}/%{name}.png
 install -m644 %{SOURCE12} -D %{buildroot}%{_iconsdir}/%{name}.png
 install -m644 %{SOURCE13} -D %{buildroot}%{_liconsdir}/%{name}.png
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc %{name}.txt
 %{_gamesbindir}/%{name}
 %{_datadir}/applications/mandriva-%{name}.desktop
