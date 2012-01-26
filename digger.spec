@@ -1,13 +1,13 @@
 Name:		digger
-Version:	20110912
+Version:	20110916
 Release:	1
 # created from my branch at https://gitorious.org/digger with:
 # git archive --prefix=digger-$(date +%Y%m%d)/ -o digger-$(date +%Y%m%d).tar --format tar HEAD
-Source0:	%{name}-%{version}.tar.xz
+Source0:	%{name}-%{version}.tar.gz
 Source11:	%{name}-16x16.png
 Source12:	%{name}-32x32.png
 Source13:	%{name}-48x48.png
-License:	GPL
+License:	GPLv2
 Group:		Games/Arcade
 URL:		http://www.digger.org/
 Summary:	The Unix version of the old classic game Digger
