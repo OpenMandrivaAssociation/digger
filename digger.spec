@@ -1,9 +1,9 @@
 Name:		digger
-Version:	20110916
+Version:	20121207
 Release:	1
 # created from my branch at https://gitorious.org/digger with:
 # git archive --prefix=digger-$(date +%Y%m%d)/ -o digger-$(date +%Y%m%d).tar --format tar HEAD
-Source0:	%{name}-%{version}.tar.gz
+Source0:	%{name}-%{version}.tar.xz
 Source11:	%{name}-16x16.png
 Source12:	%{name}-32x32.png
 Source13:	%{name}-48x48.png
@@ -13,6 +13,7 @@ URL:		http://www.digger.org/
 Summary:	The Unix version of the old classic game Digger
 BuildRequires:	SDL-devel
 BuildRequires:	zlib-devel
+BuildRequires:	cmake
 
 %description
 This is the Unix version of the old classic game Digger.
@@ -29,10 +30,11 @@ It has many new features including:
 %setup -q
 
 %build
-%make CFLAGS="%{optflags}"
+%cmake
+%make
 
 %install
-install -m755 digger -D %{buildroot}%{_gamesbindir}/%{name}
+install -m755 build/digger -D %{buildroot}%{_gamesbindir}/%{name}
 
 install -d %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -58,9 +60,6 @@ install -m644 %{SOURCE13} -D %{buildroot}%{_liconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
-
-
-
 
 %changelog
 * Thu Jan 26 2012 Andrey Bondrov <abondrov@mandriva.org> 20110916-1
