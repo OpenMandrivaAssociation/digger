@@ -1,7 +1,7 @@
 Summary:	The Unix version of the old classic game Digger
 Name:		digger
 Version:	20121207
-Release:	9
+Release:	10
 License:	GPLv2
 Group:		Games/Arcade
 Url:		http://www.digger.org/
