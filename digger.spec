@@ -4,7 +4,7 @@ Version:	20121207
 Release:	10
 License:	GPLv2
 Group:		Games/Arcade
-Url:		http://www.digger.org/
+Url:		https://www.digger.org/
 # created from my branch at https://gitorious.org/digger with:
 # git archive --prefix=digger-$(date +%Y%m%d)/ -o digger-$(date +%Y%m%d).tar --format tar HEAD
 Source0:	%{name}-%{version}.tar.xz
